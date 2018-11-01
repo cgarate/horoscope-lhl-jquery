@@ -1,4 +1,4 @@
-
+// See the bottom of the code for activities to practice after reviewing this code.
 
 // Begin jQuery onReady code:
 $(function() {
@@ -14,6 +14,8 @@ $(function() {
   */
 
   $("#searchSign").on("keydown", function(event) {
+    // The listener is active now, we are assuming that the user will press 'Enter' when they are done
+    // typing the zodiac sign name so we set an If block to act when the Enter key is pressed.
     if (event.key === 'Enter') {
       // Calling the ajax method in jQuery and passing an object with the config options needed
       $.ajax({
@@ -21,6 +23,7 @@ $(function() {
         async: true,
         crossDomain: true,
         type: "GET",
+        // Retrieve the current value inside the input text box and use it in the URL to call the API
         url: `http://horoscope-lhl.herokuapp.com/horoscopes/${event.target.value}`,
         dataType: "JSON"
       })
@@ -37,7 +40,7 @@ $(function() {
               <p>${response.horoscope}</p>
             </article>
           `);
-          // Clean up the content of the input text box
+          // Clear the content of the input text box
           $("#searchSign")[0].value="";
 
         } else {
@@ -47,7 +50,7 @@ $(function() {
               <span>The API did not return data for ${event.target.value}</span>
             </article>
           `);
-          // Clean up the content of the input text box
+          // Clear the content of the input text box
           $("#searchSign")[0].value="";
         }
       })
@@ -58,3 +61,18 @@ $(function() {
   });
 
 })
+
+/**
+ * First review the code above and its comments, try to follow and understand each of the steps in the process.
+ * After reviewing the code you can take it as a starting point and complete the following challenges to put
+ * in practice the concepts learned:
+ *    1. Validate that the value typed by the user is a valid zodiac sign name before calling the API
+ *      - Where do you have to add this condition?
+ *      - What will you use to have a list of valid zodiac signs you can compare against?
+ *    2. Switch to using a select dropdown instead of the input text box:
+ *      - What event do you have to listen to in a select dropdown?
+ *      - Are there any advantages of hardcoding the zodiac signs in a dropdown compared
+ *        to letting the users type whatever they want?
+ *        Hint: did you have to validate the data coming from the dropdown?
+ *    3. Style the HTML
+ */
