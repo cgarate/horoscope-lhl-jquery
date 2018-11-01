@@ -9,7 +9,7 @@ $(function() {
    * Then we add a listener to the input text field, we are setting it to listen to the 'keydown' event
    * The callback function is setup to receive the event once it's captured by the listener
    *    If the key pressed is 'Enter' then we make the ajax call to the API
-   *    If the ajax call is successful, insert the horoscope data to our HTML element.
+   *    If the ajax call is successful, insert the horoscope data into the corresponding HTML element.
    *    If not console.log the error.
   */
 
